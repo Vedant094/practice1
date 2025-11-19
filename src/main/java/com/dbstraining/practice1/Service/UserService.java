@@ -14,7 +14,7 @@ public interface UserService {
     //Optional<User> getUserId(Long userId);
 //    List<User> getAllUsers();
     //Requests requestAccountDeletion(Long userId);
-    //boolean loginUser(String email,String password);
+    boolean loginUser(String email,String password);
 
 
     User createUser(User user, Long managerId); // Assign user to a manager

@@ -19,7 +19,7 @@ public class RequestServiceImpl implements RequestService {
     private final UserRepository userRepository;
 
     @Override
-    public Requests submitRequest(Long userId, Requests request) {
+    public Requests createRequest(Requests request, Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         request.setUser(user);

@@ -19,6 +19,12 @@ public class UserServiceImpl implements UserService {
     private final ManagerRepository managerRepository;
 
     @Override
+    public boolean loginUser(String email, String password) {
+        User user=userRepository.findByEmail(email);
+        return user!=null &&user.getPassword().equals(password);
+    }
+
+    @Override
     public User createUser(User user, Long managerId) {
         Manager manager = managerRepository.findById(managerId)
                 .orElseThrow(() -> new RuntimeException("Manager not found"));

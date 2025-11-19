@@ -34,7 +34,8 @@ public class ManagerServiceImpl implements ManagerService {
 
          @Override
          public boolean loginAdmin(String email, String password) {
-              return false;
+            Manager manager=managerRepository.findByEmail(email);
+            return manager!=null && manager.getPassword().equals(password);
          }
 
          @Override
@@ -42,13 +43,13 @@ public class ManagerServiceImpl implements ManagerService {
             return managerRepository.findAll();
         }
 
-        @Override
-        public List<User> getUsersUnderManager(Long managerId) {
+         @Override
+         public List<User> getUsersUnderManager(Long managerId) {
             return userRepository.findByManagerId(managerId);
         }
 
-        @Override
-        public List<Requests> getRequestsForManager(Long managerId) {
+         @Override
+         public List<Requests> getRequestsForManager(Long managerId) {
             return requestRepository.findRequestsByManagerId(managerId);
         }
     }
